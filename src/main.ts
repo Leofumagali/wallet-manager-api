@@ -10,7 +10,9 @@ app.use(json());
 
 dotenv.config();
 
-connectDB();
+if (process.env.NODE_ENV !== 'test') {
+  connectDB();
+}
 
 app.use('/api/v1', routes);
 

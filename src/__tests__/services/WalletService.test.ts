@@ -1,7 +1,17 @@
-import { Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
 import { WalletService } from "../../domain/services/WalletService";
 import { Wallet } from "../../entities/Wallet";
 import { WalletRepository } from "../../infra/repositories/WalletRepository";
+import { MongoMemoryServer } from "mongodb-memory-server";
+
+let mongoServer;
+
+beforeAll(async () => {
+  mongoServer = await MongoMemoryServer.create();
+  const mongoUri = mongoServer.getUri();
+
+  await mongoose.connect(mongoUri);
+});
 
 describe('WalletService', () => {
   let walletService: WalletService;

@@ -1,5 +1,5 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import mongoose, { ObjectId } from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 import { WalletRepository } from '../../infra/repositories/WalletRepository';
 import { Wallet } from '../../entities/Wallet';
 import 'reflect-metadata';
@@ -22,7 +22,7 @@ afterAll(async () => {
 });
 
 describe('WalletRepository', () => {
-  let walletId: ObjectId;
+  let walletId: Types.ObjectId;
 
   it('should add a wallet successfully', async () => {
     const walletData: Wallet = {

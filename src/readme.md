@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Esta é uma API para gerenciar carteiras de criptomoedas. A API permite adicionar, atualizar, excluir e listar carteiras, bem como associar criptomoedas a essas carteiras. A API é construída usando TypeScript, Node, Express e banco de dados em memória.
+Esta é uma API para gerenciar carteiras de criptomoedas. A API permite adicionar, atualizar, excluir e listar carteiras, bem como associar criptomoedas a essas carteiras. A API é construída usando TypeScript, Node, Express e MongoDB.
 
 ## Funcionalidades
 
@@ -16,20 +16,45 @@ Esta é uma API para gerenciar carteiras de criptomoedas. A API permite adiciona
 
 ```
 src/
-├── controllers/
-│   └── walletController.ts
-├── database/
-│   └── InMemoryDatabase.ts
-├── dto/
-│   ├── addWalletDTO.ts
-│   └── updateWalletDTO.ts
-├── middlewares/
-│   └── dtoValidationMiddleware.ts
-├── models/
-│   └──  Wallet.ts
-├── routes/
-│   └── index.ts
-└── main.ts
+├── __tests__/
+│   ├── controller/
+│   │   └── WalletController.test.ts
+│   ├── repositories/
+│   │   └── WalletRepository.test.ts
+│   └── services/
+│       └── WalletService.test.ts
+├── api/
+│   ├── controllers/
+│   │   └── WalletController.ts
+│   ├── routes/
+│       └── index.ts
+├── domain/
+│   ├── services/
+│   │   └── WalletService.ts
+│   ├── interfaces/
+│   │   └──IWalletRepository.ts
+│   └── dto/
+│       ├── AddWalletDTO.ts
+│       └── UpdateWalletDTO.ts
+├── entities/
+│   └── Wallet.ts
+├── infra/
+│   ├── database/
+│   │   ├── models
+│   │   │   └── WalletModal.ts
+│   │   ├── schemas
+│   │   │   └── WalletSchema.ts
+│   │   └── db.ts
+│   ├── middlewares/
+│   │   └── dtoValidationMiddleware.ts
+│   ├── inversify/
+│   │   ├── types.ts
+│   │   └── inversify.config.ts
+│   └── repositories/
+│       └── WalletRepository.ts
+├── main.ts
+├── general configs
+└── .env
 ```
 
 ## Endpoints
