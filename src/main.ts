@@ -1,14 +1,19 @@
+import 'reflect-metadata';
 import express, { json } from 'express';
-import { routes } from './routes';
+import { routes } from './api/routes';
+import { connectDB } from './infra/database/db';
+import dotenv from 'dotenv';
 
-const app = express();
+export const app = express();
 
 app.use(json());
 
-app.use('/api', routes);
+dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+connectDB();
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.use('/api/v1', routes);
+
+app.listen(3030, () => {
+  console.log(`Server is running on port 3030`);
 });

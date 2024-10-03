@@ -13,6 +13,7 @@ export function dtoValidationMiddleware<T extends object>(type: new () => T): (
 
     if(errors.length > 0) {
       res.status(400).json(errors);
+      return;
     }
     
     next();
